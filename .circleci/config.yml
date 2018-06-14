@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: sudo apt-get update && sudo apt-get install -y wget python-protobuf
+          command: sudo apt-get update && sudo apt-get install -y wget python-protobuf build-essential
       - run:
           name: Update Git Submodules
           command: git submodule sync && git submodule update --init --recursive
