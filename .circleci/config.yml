@@ -13,6 +13,6 @@ jobs:
           name: Fetch Protobuf `protoc` executable
           command: cd .. && wget https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3.5.1-linux-x86_64.zip && unzip protoc-3.5.1-linux-x86_64.zip -d protoc3 && cd rep
       - run:
-          name: Print the Current Time
-          command: date
+          name: Compile Proto File
+          command: ../proto3/bin/protoc -o test.pb source/Zorb.proto
 
