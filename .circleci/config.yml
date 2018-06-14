@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: sudo apt-get update && sudo apt-get install -y wget python-protobuf build-essential
+          command: sudo apt-get update && sudo apt-get install -y wget python-protobuf build-essential protobuf-compiler
       - run:
           name: Update Git Submodules
           command: git submodule sync && git submodule update --init --recursive
@@ -20,7 +20,7 @@ jobs:
           command: ../protoc3/bin/protoc -o test.pb source/Zorb.proto
       - run:
           name: Build NanoPB
-          command: export PATH="$PWD/../protoc3/bin:$PATH" && cd resources/nanopb/generator/proto && make && cd ../../../..
+          command: cd resources/nanopb/generator/proto && make && cd ../../../..
       - run:
           name: Run the Nano PB Generator
           command: python resources/nanopb/generator/nanopb_generator.py test.pb
