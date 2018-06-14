@@ -19,6 +19,9 @@ jobs:
           name: Compile Proto File
           command: ../protoc3/bin/protoc -o test.pb source/Zorb.proto
       - run:
+          name: Build NanoPB
+          command: cd resources/nanopb/generator/proto && make && cd ../../../..
+      - run:
           name: Run the Nano PB Generator
           command: python resources/nanopb/generator/nanopb_generator.py test.pb
 
