@@ -17,11 +17,17 @@ jobs:
           command: cd .. && wget https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3.5.1-linux-x86_64.zip && unzip protoc-3.5.1-linux-x86_64.zip -d protoc3 && cd rep
       - run:
           name: Compile Proto File
-          command: ../protoc3/bin/protoc -o test.pb source/Zorb.proto
+          command: ../protoc3/bin/protoc -o zorb.pb source/Zorb.proto
+      - run:
+          name: Compile Proto File
+          command: ../protoc3/bin/protoc -o device.pb source/Device.proto
       - run:
           name: Build NanoPB
           command: cd resources/nanopb/generator/proto && make && cd ../../../..
       - run:
           name: Run the Nano PB Generator
-          command: python resources/nanopb/generator/nanopb_generator.py test.pb
+          command: python resources/nanopb/generator/nanopb_generator.py zorb.pb
+      - run:
+          name: Run the Nano PB Generator
+          command: python resources/nanopb/generator/nanopb_generator.py device.pb
 
