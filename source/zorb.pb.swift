@@ -36,17 +36,17 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 /// A timeline consists of an array of vibrations that can have an arbitrary
 ///
 /// length.
-struct Zorb_Timeline {
+public struct Zorb_Timeline {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// a field of zero or more vibrations (you can have an empty Timeline)
-  var vibrations: [Zorb_Vibration] = []
+  public var vibrations: [Zorb_Vibration] = []
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
 ///*
@@ -66,28 +66,28 @@ struct Zorb_Timeline {
 ///   6) the ending amplitude of the vibration
 ///
 ///   7) the integer index of an easing equation to use in an array of easing functions
-struct Zorb_Vibration {
+public struct Zorb_Vibration {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var channels: UInt32 = 0
+  public var channels: UInt32 = 0
 
-  var delay: UInt32 = 0
+  public var delay: UInt32 = 0
 
-  var duration: UInt32 = 0
+  public var duration: UInt32 = 0
 
-  var position: UInt32 = 0
+  public var position: UInt32 = 0
 
-  var start: UInt32 = 0
+  public var start: UInt32 = 0
 
-  var end: UInt32 = 0
+  public var end: UInt32 = 0
 
-  var easing: UInt32 = 0
+  public var easing: UInt32 = 0
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -95,12 +95,12 @@ struct Zorb_Vibration {
 fileprivate let _protobuf_package = "zorb"
 
 extension Zorb_Timeline: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".Timeline"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".Timeline"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "vibrations"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.vibrations)
@@ -109,14 +109,14 @@ extension Zorb_Timeline: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.vibrations.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.vibrations, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Zorb_Timeline, rhs: Zorb_Timeline) -> Bool {
+  public static func ==(lhs: Zorb_Timeline, rhs: Zorb_Timeline) -> Bool {
     if lhs.vibrations != rhs.vibrations {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -124,8 +124,8 @@ extension Zorb_Timeline: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
 }
 
 extension Zorb_Vibration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".Vibration"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".Vibration"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "channels"),
     2: .same(proto: "delay"),
     3: .same(proto: "duration"),
@@ -135,7 +135,7 @@ extension Zorb_Vibration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     7: .same(proto: "easing"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularUInt32Field(value: &self.channels)
@@ -150,7 +150,7 @@ extension Zorb_Vibration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.channels != 0 {
       try visitor.visitSingularUInt32Field(value: self.channels, fieldNumber: 1)
     }
@@ -175,7 +175,7 @@ extension Zorb_Vibration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Zorb_Vibration, rhs: Zorb_Vibration) -> Bool {
+  public static func ==(lhs: Zorb_Vibration, rhs: Zorb_Vibration) -> Bool {
     if lhs.channels != rhs.channels {return false}
     if lhs.delay != rhs.delay {return false}
     if lhs.duration != rhs.duration {return false}
