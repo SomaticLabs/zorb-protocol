@@ -1,3 +1,5 @@
+SOURCE_DIR := ../source
+
 # phony targets
 .PHONY: all compile c python swift clean
 
@@ -5,10 +7,10 @@
 all: compile c python swift
 
 # compile the protobuf binaries
-compile: zorb.proto device.proto
+compile: $(SOURCE_DIR)/zorb.proto $(SOURCE_DIR)/device.proto
 	@echo Compiling the protobuf binaries
-	protoc -o zorb.pb zorb.proto
-	protoc -o device.pb device.proto
+	protoc -I=$(SOURCE_DIR) -o zorb.pb $(SOURCE_DIR)/zorb.proto
+	protoc -I=$(SOURCE_DIR) -o device.pb $(SOURCE_DIR)/device.proto
 
 # generate C structs using nanopb
 c: zorb.pb device.pb
@@ -18,16 +20,16 @@ c: zorb.pb device.pb
 	python ../resources/nanopb/generator/nanopb_generator.py device.pb
 
 # generate Python structs
-python: zorb.proto device.proto
+python: $(SOURCE_DIR)/zorb.proto $(SOURCE_DIR)/device.proto
 	@echo Generating Python structs
-	protoc --python_out=. zorb.proto
-	protoc --python_out=. device.proto
+	protoc -I=$(SOURCE_DIR) --python_out=. $(SOURCE_DIR)/zorb.proto
+	protoc -I=$(SOURCE_DIR) --python_out=. $(SOURCE_DIR)/device.proto
 
 # generate Swift structs
-swift: zorb.proto device.proto
+swift: $(SOURCE_DIR)/zorb.proto $(SOURCE_DIR)/device.proto
 	@echo Generating Swift structs
-	protoc --swift_opt=Visibility=Public --swift_out=. zorb.proto
-	protoc --swift_opt=Visibility=Public --swift_out=. device.proto
+	protoc -I=$(SOURCE_DIR) --swift_opt=Visibility=Public --swift_out=. $(SOURCE_DIR)/zorb.proto
+	protoc -I=$(SOURCE_DIR) --swift_opt=Visibility=Public --swift_out=. $(SOURCE_DIR)/device.proto
 
 # remove all compiled/generated files
 clean:
