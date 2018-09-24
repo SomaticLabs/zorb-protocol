@@ -57,7 +57,13 @@ brew install protobuf
 
 #### Re-generate source code when the `.proto` files change
 
-Change directory to the `build` folder and then run `make`.
+First, make sure you load all the needed submodules:
+
+```
+git submodule update --init --recursive
+```
+
+Next, change directory to the `build` folder and then run `make`.
 
 ```
 cd build
