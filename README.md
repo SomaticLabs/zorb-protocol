@@ -57,7 +57,7 @@ brew install protobuf swift-protobuf
 
 #### Re-generate source code when the `.proto` files change
 
-First, make sure you load all the needed submodules:
+Make sure you load all the needed submodules:
 
 ```
 git submodule update --init --recursive
