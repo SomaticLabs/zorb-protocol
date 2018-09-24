@@ -45,14 +45,14 @@ Then, you can [use the generated types as you would any other Swift struct](http
 
 If you make changes to the `.proto` files or want to generate code for a language that's not currently in this repository, you can generate source code to write and read haptic timelines using your language of choice.
 
-You will first need to [install the `protoc` compiler](https://github.com/protocolbuffers/protobuf#protocol-compiler-installation).
+You will first need to [install the `protoc` compiler](https://github.com/protocolbuffers/protobuf#protocol-compiler-installation) and the [SwiftProtobuf code generator plugin](https://github.com/apple/swift-protobuf#building-and-installing-the-code-generator-plugin).
 
 #### Install the `protoc` compiler on macOS
 
 You can use Homebrew:
 
 ```
-brew install protobuf
+brew install protobuf swift-protobuf
 ```
 
 #### Re-generate source code when the `.proto` files change
