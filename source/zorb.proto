@@ -52,27 +52,28 @@ message Zorb {
 	 * length.
 	 */
 	message Timeline {
-		/**
-		 * A vibration consists of:
-		 *   1) the unsigned integer of LRA channels with which to communicate
-		 *   2) the delay to apply to the vibration in milliseconds
-		 *   3) the duration of the vibration in milliseconds
-		 *   4) the starting position within the vibration (amount to clip off the beginning)
-		 *   5) the starting amplitude of the vibration
-		 *   6) the ending amplitude of the vibration
-		 *   7) the integer index of an easing equation to use in an array of easing functions
-		 */
-		message Vibration {
-		  uint32 channels = 1;
-		  uint32 delay = 2;
-		  uint32 duration = 3;
-		  uint32 position = 4;
-		  uint32 start = 5;
-		  uint32 end = 6;
-		  uint32 easing = 7;
-		}
 		// a field of zero or more vibrations (you can have an empty Timeline)
 		repeated Vibration vibrations = 1;
+	}
+
+	/**
+	 * A vibration consists of:
+	 *   1) the unsigned integer of LRA channels with which to communicate
+	 *   2) the delay to apply to the vibration in milliseconds
+	 *   3) the duration of the vibration in milliseconds
+	 *   4) the starting position within the vibration (amount to clip off the beginning)
+	 *   5) the starting amplitude of the vibration
+	 *   6) the ending amplitude of the vibration
+	 *   7) the integer index of an easing equation to use in an array of easing functions
+	 */
+	message Vibration {
+	  uint32 channels = 1;
+	  uint32 delay = 2;
+	  uint32 duration = 3;
+	  uint32 position = 4;
+	  uint32 start = 5;
+	  uint32 end = 6;
+	  uint32 easing = 7;
 	}
 
 	repeated Timeline timelines = 2;

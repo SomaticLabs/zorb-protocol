@@ -150,50 +150,50 @@ public struct Zorb_Zorb {
     // methods supported on all messages.
 
     /// a field of zero or more vibrations (you can have an empty Timeline)
-    public var vibrations: [Zorb_Zorb.Timeline.Vibration] = []
+    public var vibrations: [Zorb_Zorb.Vibration] = []
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    ///*
-    ///
-    /// A vibration consists of:
-    ///
-    ///   1) the unsigned integer of LRA channels with which to communicate
-    ///
-    ///   2) the delay to apply to the vibration in milliseconds
-    ///
-    ///   3) the duration of the vibration in milliseconds
-    ///
-    ///   4) the starting position within the vibration (amount to clip off the beginning)
-    ///
-    ///   5) the starting amplitude of the vibration
-    ///
-    ///   6) the ending amplitude of the vibration
-    ///
-    ///   7) the integer index of an easing equation to use in an array of easing functions
-    public struct Vibration {
-      // SwiftProtobuf.Message conformance is added in an extension below. See the
-      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-      // methods supported on all messages.
+    public init() {}
+  }
 
-      public var channels: UInt32 = 0
+  ///*
+  ///
+  /// A vibration consists of:
+  ///
+  ///   1) the unsigned integer of LRA channels with which to communicate
+  ///
+  ///   2) the delay to apply to the vibration in milliseconds
+  ///
+  ///   3) the duration of the vibration in milliseconds
+  ///
+  ///   4) the starting position within the vibration (amount to clip off the beginning)
+  ///
+  ///   5) the starting amplitude of the vibration
+  ///
+  ///   6) the ending amplitude of the vibration
+  ///
+  ///   7) the integer index of an easing equation to use in an array of easing functions
+  public struct Vibration {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
 
-      public var delay: UInt32 = 0
+    public var channels: UInt32 = 0
 
-      public var duration: UInt32 = 0
+    public var delay: UInt32 = 0
 
-      public var position: UInt32 = 0
+    public var duration: UInt32 = 0
 
-      public var start: UInt32 = 0
+    public var position: UInt32 = 0
 
-      public var end: UInt32 = 0
+    public var start: UInt32 = 0
 
-      public var easing: UInt32 = 0
+    public var end: UInt32 = 0
 
-      public var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var easing: UInt32 = 0
 
-      public init() {}
-    }
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
 
     public init() {}
   }
@@ -426,8 +426,8 @@ extension Zorb_Zorb.Timeline: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension Zorb_Zorb.Timeline.Vibration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Zorb_Zorb.Timeline.protoMessageName + ".Vibration"
+extension Zorb_Zorb.Vibration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Zorb_Zorb.protoMessageName + ".Vibration"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "channels"),
     2: .same(proto: "delay"),
@@ -478,7 +478,7 @@ extension Zorb_Zorb.Timeline.Vibration: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Zorb_Zorb.Timeline.Vibration, rhs: Zorb_Zorb.Timeline.Vibration) -> Bool {
+  public static func ==(lhs: Zorb_Zorb.Vibration, rhs: Zorb_Zorb.Vibration) -> Bool {
     if lhs.channels != rhs.channels {return false}
     if lhs.delay != rhs.delay {return false}
     if lhs.duration != rhs.duration {return false}
