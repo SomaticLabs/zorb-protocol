@@ -9,31 +9,71 @@
 syntax = "proto3";
 package zorb;
 
-/**
- * A timeline consists of an array of vibrations that can have an arbitrary
- * length.
- */
-message Timeline {
-  // a field of zero or more vibrations (you can have an empty Timeline)
-  repeated Vibration vibrations = 1;
-}
+message Zorb {
+	/**
+	 * A device has several configuration parameters that can be useful to a host that is sending
+	 * it instructions. This message type describes a Zorb device and its capabilities.
+	 */
+	message Device {
+	    uint32 hardware_version = 1;
+	    uint32 bootloader_version = 2;
+	    uint32 firmware_version = 3;
+	    string name = 4;
 
-/**
- * A vibration consists of:
- *   1) the unsigned integer of LRA channels with which to communicate
- *   2) the delay to apply to the vibration in milliseconds
- *   3) the duration of the vibration in milliseconds
- *   4) the starting position within the vibration (amount to clip off the beginning)
- *   5) the starting amplitude of the vibration
- *   6) the ending amplitude of the vibration
- *   7) the integer index of an easing equation to use in an array of easing functions
- */
-message Vibration {
-  uint32 channels = 1;
-  uint32 delay = 2;
-  uint32 duration = 3;
-  uint32 position = 4;
-  uint32 start = 5;
-  uint32 end = 6;
-  uint32 easing = 7;
+	    /**
+	     * An actuator can vary in its type and output. This message type describes an
+	     * actuator and its capabilities.
+	     */
+	    message Actuator {
+	        uint32 minimum_frequency = 1;
+	        uint32 maximum_frequency = 2;
+	        uint32 optimal_frequency = 3;
+
+	        // enumeration of different actuator types
+	        enum ActuatorType {
+	            LRA = 0;
+	            LRA_WIDEBAND = 1;
+	            PIEZO = 2;
+	            HAPTUATOR = 3;
+	        }
+
+	        ActuatorType type = 4;
+	    }
+
+	    repeated Actuator actuators = 5;
+	    string bluetooth_id = 6;
+	    string usb_id = 7;
+	}
+
+	Device device = 1;
+
+	/**
+	 * A timeline consists of an array of vibrations that can have an arbitrary
+	 * length.
+	 */
+	message Timeline {
+		/**
+		 * A vibration consists of:
+		 *   1) the unsigned integer of LRA channels with which to communicate
+		 *   2) the delay to apply to the vibration in milliseconds
+		 *   3) the duration of the vibration in milliseconds
+		 *   4) the starting position within the vibration (amount to clip off the beginning)
+		 *   5) the starting amplitude of the vibration
+		 *   6) the ending amplitude of the vibration
+		 *   7) the integer index of an easing equation to use in an array of easing functions
+		 */
+		message Vibration {
+		  uint32 channels = 1;
+		  uint32 delay = 2;
+		  uint32 duration = 3;
+		  uint32 position = 4;
+		  uint32 start = 5;
+		  uint32 end = 6;
+		  uint32 easing = 7;
+		}
+		// a field of zero or more vibrations (you can have an empty Timeline)
+		repeated Vibration vibrations = 1;
+	}
+
+	repeated Timeline timelines = 2;
 }

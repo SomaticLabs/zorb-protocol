@@ -31,71 +31,374 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-///*
-///
-/// A timeline consists of an array of vibrations that can have an arbitrary
-///
-/// length.
-public struct Zorb_Timeline {
+public struct Zorb_Zorb {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// a field of zero or more vibrations (you can have an empty Timeline)
-  public var vibrations: [Zorb_Vibration] = []
+  public var device: Zorb_Zorb.Device {
+    get {return _storage._device ?? Zorb_Zorb.Device()}
+    set {_uniqueStorage()._device = newValue}
+  }
+  /// Returns true if `device` has been explicitly set.
+  public var hasDevice: Bool {return _storage._device != nil}
+  /// Clears the value of `device`. Subsequent reads from it will return its default value.
+  public mutating func clearDevice() {_uniqueStorage()._device = nil}
+
+  public var timelines: [Zorb_Zorb.Timeline] {
+    get {return _storage._timelines}
+    set {_uniqueStorage()._timelines = newValue}
+  }
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
+  ///*
+  ///
+  /// A device has several configuration parameters that can be useful to a host that is sending
+  ///
+  /// it instructions. This message type describes a Zorb device and its capabilities.
+  public struct Device {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var hardwareVersion: UInt32 = 0
+
+    public var bootloaderVersion: UInt32 = 0
+
+    public var firmwareVersion: UInt32 = 0
+
+    public var name: String = String()
+
+    public var actuators: [Zorb_Zorb.Device.Actuator] = []
+
+    public var bluetoothID: String = String()
+
+    public var usbID: String = String()
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    ///*
+    ///
+    /// An actuator can vary in its type and output. This message type describes an
+    ///
+    /// actuator and its capabilities.
+    public struct Actuator {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var minimumFrequency: UInt32 = 0
+
+      public var maximumFrequency: UInt32 = 0
+
+      public var optimalFrequency: UInt32 = 0
+
+      public var type: Zorb_Zorb.Device.Actuator.ActuatorType = .lra
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      /// enumeration of different actuator types
+      public enum ActuatorType: SwiftProtobuf.Enum {
+        public typealias RawValue = Int
+        case lra // = 0
+        case lraWideband // = 1
+        case piezo // = 2
+        case haptuator // = 3
+        case UNRECOGNIZED(Int)
+
+        public init() {
+          self = .lra
+        }
+
+        public init?(rawValue: Int) {
+          switch rawValue {
+          case 0: self = .lra
+          case 1: self = .lraWideband
+          case 2: self = .piezo
+          case 3: self = .haptuator
+          default: self = .UNRECOGNIZED(rawValue)
+          }
+        }
+
+        public var rawValue: Int {
+          switch self {
+          case .lra: return 0
+          case .lraWideband: return 1
+          case .piezo: return 2
+          case .haptuator: return 3
+          case .UNRECOGNIZED(let i): return i
+          }
+        }
+
+      }
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  ///*
+  ///
+  /// A timeline consists of an array of vibrations that can have an arbitrary
+  ///
+  /// length.
+  public struct Timeline {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    /// a field of zero or more vibrations (you can have an empty Timeline)
+    public var vibrations: [Zorb_Zorb.Timeline.Vibration] = []
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    ///*
+    ///
+    /// A vibration consists of:
+    ///
+    ///   1) the unsigned integer of LRA channels with which to communicate
+    ///
+    ///   2) the delay to apply to the vibration in milliseconds
+    ///
+    ///   3) the duration of the vibration in milliseconds
+    ///
+    ///   4) the starting position within the vibration (amount to clip off the beginning)
+    ///
+    ///   5) the starting amplitude of the vibration
+    ///
+    ///   6) the ending amplitude of the vibration
+    ///
+    ///   7) the integer index of an easing equation to use in an array of easing functions
+    public struct Vibration {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var channels: UInt32 = 0
+
+      public var delay: UInt32 = 0
+
+      public var duration: UInt32 = 0
+
+      public var position: UInt32 = 0
+
+      public var start: UInt32 = 0
+
+      public var end: UInt32 = 0
+
+      public var easing: UInt32 = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
   public init() {}
-}
 
-///*
-///
-/// A vibration consists of:
-///
-///   1) the unsigned integer of LRA channels with which to communicate
-///
-///   2) the delay to apply to the vibration in milliseconds
-///
-///   3) the duration of the vibration in milliseconds
-///
-///   4) the starting position within the vibration (amount to clip off the beginning)
-///
-///   5) the starting amplitude of the vibration
-///
-///   6) the ending amplitude of the vibration
-///
-///   7) the integer index of an easing equation to use in an array of easing functions
-public struct Zorb_Vibration {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var channels: UInt32 = 0
-
-  public var delay: UInt32 = 0
-
-  public var duration: UInt32 = 0
-
-  public var position: UInt32 = 0
-
-  public var start: UInt32 = 0
-
-  public var end: UInt32 = 0
-
-  public var easing: UInt32 = 0
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
+  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "zorb"
 
-extension Zorb_Timeline: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".Timeline"
+extension Zorb_Zorb: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".Zorb"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "device"),
+    2: .same(proto: "timelines"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _device: Zorb_Zorb.Device? = nil
+    var _timelines: [Zorb_Zorb.Timeline] = []
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _device = source._device
+      _timelines = source._timelines
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularMessageField(value: &_storage._device)
+        case 2: try decoder.decodeRepeatedMessageField(value: &_storage._timelines)
+        default: break
+        }
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if let v = _storage._device {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      }
+      if !_storage._timelines.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._timelines, fieldNumber: 2)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Zorb_Zorb, rhs: Zorb_Zorb) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._device != rhs_storage._device {return false}
+        if _storage._timelines != rhs_storage._timelines {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Zorb_Zorb.Device: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Zorb_Zorb.protoMessageName + ".Device"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "hardware_version"),
+    2: .standard(proto: "bootloader_version"),
+    3: .standard(proto: "firmware_version"),
+    4: .same(proto: "name"),
+    5: .same(proto: "actuators"),
+    6: .standard(proto: "bluetooth_id"),
+    7: .standard(proto: "usb_id"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularUInt32Field(value: &self.hardwareVersion)
+      case 2: try decoder.decodeSingularUInt32Field(value: &self.bootloaderVersion)
+      case 3: try decoder.decodeSingularUInt32Field(value: &self.firmwareVersion)
+      case 4: try decoder.decodeSingularStringField(value: &self.name)
+      case 5: try decoder.decodeRepeatedMessageField(value: &self.actuators)
+      case 6: try decoder.decodeSingularStringField(value: &self.bluetoothID)
+      case 7: try decoder.decodeSingularStringField(value: &self.usbID)
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.hardwareVersion != 0 {
+      try visitor.visitSingularUInt32Field(value: self.hardwareVersion, fieldNumber: 1)
+    }
+    if self.bootloaderVersion != 0 {
+      try visitor.visitSingularUInt32Field(value: self.bootloaderVersion, fieldNumber: 2)
+    }
+    if self.firmwareVersion != 0 {
+      try visitor.visitSingularUInt32Field(value: self.firmwareVersion, fieldNumber: 3)
+    }
+    if !self.name.isEmpty {
+      try visitor.visitSingularStringField(value: self.name, fieldNumber: 4)
+    }
+    if !self.actuators.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.actuators, fieldNumber: 5)
+    }
+    if !self.bluetoothID.isEmpty {
+      try visitor.visitSingularStringField(value: self.bluetoothID, fieldNumber: 6)
+    }
+    if !self.usbID.isEmpty {
+      try visitor.visitSingularStringField(value: self.usbID, fieldNumber: 7)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Zorb_Zorb.Device, rhs: Zorb_Zorb.Device) -> Bool {
+    if lhs.hardwareVersion != rhs.hardwareVersion {return false}
+    if lhs.bootloaderVersion != rhs.bootloaderVersion {return false}
+    if lhs.firmwareVersion != rhs.firmwareVersion {return false}
+    if lhs.name != rhs.name {return false}
+    if lhs.actuators != rhs.actuators {return false}
+    if lhs.bluetoothID != rhs.bluetoothID {return false}
+    if lhs.usbID != rhs.usbID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Zorb_Zorb.Device.Actuator: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Zorb_Zorb.Device.protoMessageName + ".Actuator"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "minimum_frequency"),
+    2: .standard(proto: "maximum_frequency"),
+    3: .standard(proto: "optimal_frequency"),
+    4: .same(proto: "type"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularUInt32Field(value: &self.minimumFrequency)
+      case 2: try decoder.decodeSingularUInt32Field(value: &self.maximumFrequency)
+      case 3: try decoder.decodeSingularUInt32Field(value: &self.optimalFrequency)
+      case 4: try decoder.decodeSingularEnumField(value: &self.type)
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.minimumFrequency != 0 {
+      try visitor.visitSingularUInt32Field(value: self.minimumFrequency, fieldNumber: 1)
+    }
+    if self.maximumFrequency != 0 {
+      try visitor.visitSingularUInt32Field(value: self.maximumFrequency, fieldNumber: 2)
+    }
+    if self.optimalFrequency != 0 {
+      try visitor.visitSingularUInt32Field(value: self.optimalFrequency, fieldNumber: 3)
+    }
+    if self.type != .lra {
+      try visitor.visitSingularEnumField(value: self.type, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Zorb_Zorb.Device.Actuator, rhs: Zorb_Zorb.Device.Actuator) -> Bool {
+    if lhs.minimumFrequency != rhs.minimumFrequency {return false}
+    if lhs.maximumFrequency != rhs.maximumFrequency {return false}
+    if lhs.optimalFrequency != rhs.optimalFrequency {return false}
+    if lhs.type != rhs.type {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Zorb_Zorb.Device.Actuator.ActuatorType: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "LRA"),
+    1: .same(proto: "LRA_WIDEBAND"),
+    2: .same(proto: "PIEZO"),
+    3: .same(proto: "HAPTUATOR"),
+  ]
+}
+
+extension Zorb_Zorb.Timeline: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Zorb_Zorb.protoMessageName + ".Timeline"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "vibrations"),
   ]
@@ -116,15 +419,15 @@ extension Zorb_Timeline: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Zorb_Timeline, rhs: Zorb_Timeline) -> Bool {
+  public static func ==(lhs: Zorb_Zorb.Timeline, rhs: Zorb_Zorb.Timeline) -> Bool {
     if lhs.vibrations != rhs.vibrations {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Zorb_Vibration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".Vibration"
+extension Zorb_Zorb.Timeline.Vibration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Zorb_Zorb.Timeline.protoMessageName + ".Vibration"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "channels"),
     2: .same(proto: "delay"),
@@ -175,7 +478,7 @@ extension Zorb_Vibration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Zorb_Vibration, rhs: Zorb_Vibration) -> Bool {
+  public static func ==(lhs: Zorb_Zorb.Timeline.Vibration, rhs: Zorb_Zorb.Timeline.Vibration) -> Bool {
     if lhs.channels != rhs.channels {return false}
     if lhs.delay != rhs.delay {return false}
     if lhs.duration != rhs.duration {return false}

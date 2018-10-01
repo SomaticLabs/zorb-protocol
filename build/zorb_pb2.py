@@ -19,23 +19,74 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='zorb',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\nzorb.proto\x12\x04zorb\"/\n\x08Timeline\x12#\n\nvibrations\x18\x01 \x03(\x0b\x32\x0f.zorb.Vibration\"|\n\tVibration\x12\x10\n\x08\x63hannels\x18\x01 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x02 \x01(\r\x12\x10\n\x08\x64uration\x18\x03 \x01(\r\x12\x10\n\x08position\x18\x04 \x01(\r\x12\r\n\x05start\x18\x05 \x01(\r\x12\x0b\n\x03\x65nd\x18\x06 \x01(\r\x12\x0e\n\x06\x65\x61sing\x18\x07 \x01(\rb\x06proto3')
+  serialized_pb=_b('\n\nzorb.proto\x12\x04zorb\"\xa7\x05\n\x04Zorb\x12!\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x11.zorb.Zorb.Device\x12&\n\ttimelines\x18\x02 \x03(\x0b\x32\x13.zorb.Zorb.Timeline\x1a\x95\x03\n\x06\x44\x65vice\x12\x18\n\x10hardware_version\x18\x01 \x01(\r\x12\x1a\n\x12\x62ootloader_version\x18\x02 \x01(\r\x12\x18\n\x10\x66irmware_version\x18\x03 \x01(\r\x12\x0c\n\x04name\x18\x04 \x01(\t\x12-\n\tactuators\x18\x05 \x03(\x0b\x32\x1a.zorb.Zorb.Device.Actuator\x12\x14\n\x0c\x62luetooth_id\x18\x06 \x01(\t\x12\x0e\n\x06usb_id\x18\x07 \x01(\t\x1a\xd7\x01\n\x08\x41\x63tuator\x12\x19\n\x11minimum_frequency\x18\x01 \x01(\r\x12\x19\n\x11maximum_frequency\x18\x02 \x01(\r\x12\x19\n\x11optimal_frequency\x18\x03 \x01(\r\x12\x35\n\x04type\x18\x04 \x01(\x0e\x32\'.zorb.Zorb.Device.Actuator.ActuatorType\"C\n\x0c\x41\x63tuatorType\x12\x07\n\x03LRA\x10\x00\x12\x10\n\x0cLRA_WIDEBAND\x10\x01\x12\t\n\x05PIEZO\x10\x02\x12\r\n\tHAPTUATOR\x10\x03\x1a\xbb\x01\n\x08Timeline\x12\x31\n\nvibrations\x18\x01 \x03(\x0b\x32\x1d.zorb.Zorb.Timeline.Vibration\x1a|\n\tVibration\x12\x10\n\x08\x63hannels\x18\x01 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x02 \x01(\r\x12\x10\n\x08\x64uration\x18\x03 \x01(\r\x12\x10\n\x08position\x18\x04 \x01(\r\x12\r\n\x05start\x18\x05 \x01(\r\x12\x0b\n\x03\x65nd\x18\x06 \x01(\r\x12\x0e\n\x06\x65\x61sing\x18\x07 \x01(\rb\x06proto3')
 )
 
 
 
+_ZORB_DEVICE_ACTUATOR_ACTUATORTYPE = _descriptor.EnumDescriptor(
+  name='ActuatorType',
+  full_name='zorb.Zorb.Device.Actuator.ActuatorType',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='LRA', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='LRA_WIDEBAND', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='PIEZO', index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='HAPTUATOR', index=3, number=3,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=443,
+  serialized_end=510,
+)
+_sym_db.RegisterEnumDescriptor(_ZORB_DEVICE_ACTUATOR_ACTUATORTYPE)
 
-_TIMELINE = _descriptor.Descriptor(
-  name='Timeline',
-  full_name='zorb.Timeline',
+
+_ZORB_DEVICE_ACTUATOR = _descriptor.Descriptor(
+  name='Actuator',
+  full_name='zorb.Zorb.Device.Actuator',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='vibrations', full_name='zorb.Timeline.vibrations', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      name='minimum_frequency', full_name='zorb.Zorb.Device.Actuator.minimum_frequency', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='maximum_frequency', full_name='zorb.Zorb.Device.Actuator.maximum_frequency', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='optimal_frequency', full_name='zorb.Zorb.Device.Actuator.optimal_frequency', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='zorb.Zorb.Device.Actuator.type', index=3,
+      number=4, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -44,6 +95,7 @@ _TIMELINE = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
+    _ZORB_DEVICE_ACTUATOR_ACTUATORTYPE,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -51,62 +103,133 @@ _TIMELINE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20,
-  serialized_end=67,
+  serialized_start=295,
+  serialized_end=510,
 )
 
-
-_VIBRATION = _descriptor.Descriptor(
-  name='Vibration',
-  full_name='zorb.Vibration',
+_ZORB_DEVICE = _descriptor.Descriptor(
+  name='Device',
+  full_name='zorb.Zorb.Device',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='channels', full_name='zorb.Vibration.channels', index=0,
+      name='hardware_version', full_name='zorb.Zorb.Device.hardware_version', index=0,
       number=1, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='delay', full_name='zorb.Vibration.delay', index=1,
+      name='bootloader_version', full_name='zorb.Zorb.Device.bootloader_version', index=1,
       number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='duration', full_name='zorb.Vibration.duration', index=2,
+      name='firmware_version', full_name='zorb.Zorb.Device.firmware_version', index=2,
       number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='position', full_name='zorb.Vibration.position', index=3,
+      name='name', full_name='zorb.Zorb.Device.name', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='actuators', full_name='zorb.Zorb.Device.actuators', index=4,
+      number=5, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='bluetooth_id', full_name='zorb.Zorb.Device.bluetooth_id', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='usb_id', full_name='zorb.Zorb.Device.usb_id', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_ZORB_DEVICE_ACTUATOR, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=105,
+  serialized_end=510,
+)
+
+_ZORB_TIMELINE_VIBRATION = _descriptor.Descriptor(
+  name='Vibration',
+  full_name='zorb.Zorb.Timeline.Vibration',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='channels', full_name='zorb.Zorb.Timeline.Vibration.channels', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='delay', full_name='zorb.Zorb.Timeline.Vibration.delay', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='duration', full_name='zorb.Zorb.Timeline.Vibration.duration', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='position', full_name='zorb.Zorb.Timeline.Vibration.position', index=3,
       number=4, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='start', full_name='zorb.Vibration.start', index=4,
+      name='start', full_name='zorb.Zorb.Timeline.Vibration.start', index=4,
       number=5, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='end', full_name='zorb.Vibration.end', index=5,
+      name='end', full_name='zorb.Zorb.Timeline.Vibration.end', index=5,
       number=6, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='easing', full_name='zorb.Vibration.easing', index=6,
+      name='easing', full_name='zorb.Zorb.Timeline.Vibration.easing', index=6,
       number=7, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -124,28 +247,128 @@ _VIBRATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=69,
-  serialized_end=193,
+  serialized_start=576,
+  serialized_end=700,
 )
 
-_TIMELINE.fields_by_name['vibrations'].message_type = _VIBRATION
-DESCRIPTOR.message_types_by_name['Timeline'] = _TIMELINE
-DESCRIPTOR.message_types_by_name['Vibration'] = _VIBRATION
+_ZORB_TIMELINE = _descriptor.Descriptor(
+  name='Timeline',
+  full_name='zorb.Zorb.Timeline',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='vibrations', full_name='zorb.Zorb.Timeline.vibrations', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_ZORB_TIMELINE_VIBRATION, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=513,
+  serialized_end=700,
+)
+
+_ZORB = _descriptor.Descriptor(
+  name='Zorb',
+  full_name='zorb.Zorb',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='device', full_name='zorb.Zorb.device', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='timelines', full_name='zorb.Zorb.timelines', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_ZORB_DEVICE, _ZORB_TIMELINE, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=21,
+  serialized_end=700,
+)
+
+_ZORB_DEVICE_ACTUATOR.fields_by_name['type'].enum_type = _ZORB_DEVICE_ACTUATOR_ACTUATORTYPE
+_ZORB_DEVICE_ACTUATOR.containing_type = _ZORB_DEVICE
+_ZORB_DEVICE_ACTUATOR_ACTUATORTYPE.containing_type = _ZORB_DEVICE_ACTUATOR
+_ZORB_DEVICE.fields_by_name['actuators'].message_type = _ZORB_DEVICE_ACTUATOR
+_ZORB_DEVICE.containing_type = _ZORB
+_ZORB_TIMELINE_VIBRATION.containing_type = _ZORB_TIMELINE
+_ZORB_TIMELINE.fields_by_name['vibrations'].message_type = _ZORB_TIMELINE_VIBRATION
+_ZORB_TIMELINE.containing_type = _ZORB
+_ZORB.fields_by_name['device'].message_type = _ZORB_DEVICE
+_ZORB.fields_by_name['timelines'].message_type = _ZORB_TIMELINE
+DESCRIPTOR.message_types_by_name['Zorb'] = _ZORB
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Timeline = _reflection.GeneratedProtocolMessageType('Timeline', (_message.Message,), dict(
-  DESCRIPTOR = _TIMELINE,
-  __module__ = 'zorb_pb2'
-  # @@protoc_insertion_point(class_scope:zorb.Timeline)
-  ))
-_sym_db.RegisterMessage(Timeline)
+Zorb = _reflection.GeneratedProtocolMessageType('Zorb', (_message.Message,), dict(
 
-Vibration = _reflection.GeneratedProtocolMessageType('Vibration', (_message.Message,), dict(
-  DESCRIPTOR = _VIBRATION,
+  Device = _reflection.GeneratedProtocolMessageType('Device', (_message.Message,), dict(
+
+    Actuator = _reflection.GeneratedProtocolMessageType('Actuator', (_message.Message,), dict(
+      DESCRIPTOR = _ZORB_DEVICE_ACTUATOR,
+      __module__ = 'zorb_pb2'
+      # @@protoc_insertion_point(class_scope:zorb.Zorb.Device.Actuator)
+      ))
+    ,
+    DESCRIPTOR = _ZORB_DEVICE,
+    __module__ = 'zorb_pb2'
+    # @@protoc_insertion_point(class_scope:zorb.Zorb.Device)
+    ))
+  ,
+
+  Timeline = _reflection.GeneratedProtocolMessageType('Timeline', (_message.Message,), dict(
+
+    Vibration = _reflection.GeneratedProtocolMessageType('Vibration', (_message.Message,), dict(
+      DESCRIPTOR = _ZORB_TIMELINE_VIBRATION,
+      __module__ = 'zorb_pb2'
+      # @@protoc_insertion_point(class_scope:zorb.Zorb.Timeline.Vibration)
+      ))
+    ,
+    DESCRIPTOR = _ZORB_TIMELINE,
+    __module__ = 'zorb_pb2'
+    # @@protoc_insertion_point(class_scope:zorb.Zorb.Timeline)
+    ))
+  ,
+  DESCRIPTOR = _ZORB,
   __module__ = 'zorb_pb2'
-  # @@protoc_insertion_point(class_scope:zorb.Vibration)
+  # @@protoc_insertion_point(class_scope:zorb.Zorb)
   ))
-_sym_db.RegisterMessage(Vibration)
+_sym_db.RegisterMessage(Zorb)
+_sym_db.RegisterMessage(Zorb.Device)
+_sym_db.RegisterMessage(Zorb.Device.Actuator)
+_sym_db.RegisterMessage(Zorb.Timeline)
+_sym_db.RegisterMessage(Zorb.Timeline.Vibration)
 
 
 # @@protoc_insertion_point(module_scope)
