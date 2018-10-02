@@ -74,6 +74,8 @@ make
 
 See Google's protocol buffer [Tutorials](https://developers.google.com/protocol-buffers/docs/tutorials) for instructions on generating source code for C++, C#, Go, Java, and Python.
 
+For other languages, you can take a look at Google's [list of third-party add-ons for protocol buffers](https://github.com/protocolbuffers/protobuf/blob/master/docs/third_party.md).
+
 ## Documentation
 
 More information is available in the associated documentation:
